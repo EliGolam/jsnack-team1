@@ -42,13 +42,14 @@ const numArr = []; // ARRAY numbers
 let numInp = '';
 let sumInp = 0;
 
-while (sumInp < 50) {
+do {
     while(isNaN(parseInt(numInp))){
         numInp = prompt('Enter a new number');
     }
     numArr.push(parseInt(numInp));
     sumInp += parseInt(numInp);
-}
+    numInp = '';
+} while (sumInp < 50)
 
 message = `JSnack - Sum: ${sumInp}, Array: ${numArr}`
 exercise.push(message);
@@ -100,16 +101,20 @@ function generateRandArr(length, max, min) {
 }
 
 // JSNACK 3: 
+/* Dare la possibilità di inserire due parole. 
+Verificare tramite una funzione che le due parole abbiano la stessa lunghezza. 
+Se hanno la stessa lunghezza, stamparle entrambe altrimenti stampare la più lunga delle due.
+*/
 let wordInp1 = '';
 let wordInp2 = '';
 
-while (checkInp(wordInp1)) {
+do {
     wordInp1 = prompt('Insert first word');
-}
+} while (notValidInput(wordInp1)) 
 
-while (checkInp(wordInp2)) {
+do {
     wordInp2 = prompt('Insert second word');
-}
+} while (notValidInput(wordInp2)) 
 
 wordInp1 = wordInp1.trim();
 wordInp2 = wordInp2.trim();
@@ -126,12 +131,14 @@ else {
 
 exercise.push(message);
 
-function checkInp(str) {
-    if (str === null || str.trim() === '') {
-        return true;
-    } else {
-        return false;
-    }
+function notValidInput(str) {
+    // if (str === null || str.trim() === '') {
+    //     return true;
+    // } else {
+    //     return false;
+    // }
+
+    return (str === null || str.trim() === '') ? true : false;
 }
 
 
